@@ -1,0 +1,35 @@
+<li class="nav-item dropdown user-menu">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown">
+        <img
+            [src]="user.pic || 'assets/img/default-profile.png'"
+            class="user-image img-circle elevation-2"
+            alt="用户头像"
+        />
+    </a>
+    <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+        <!-- User image -->
+        <li class="user-header bg-primary">
+            <img
+                [src]="user.pic || 'assets/img/default-profile.png'"
+                class="img-circle elevation-2"
+                alt="用户头像"
+            />
+
+            <p>
+                <span>{{ user.code }}</span>
+                <small>
+                    <span>{{ user.name }}</span>
+                </small>
+            </p>
+        </li>
+        <!-- Menu Footer-->
+        <li class="user-footer">
+            <a [routerLink]="['/profile']" class="btn btn-default btn-flat">
+                <p>个人资料</p>
+            </a>
+            <a (click)="logout()" class="btn btn-default btn-flat float-right">
+                <p>退出登录</p>
+            </a>
+        </li>
+    </ul>
+</li>

@@ -1,0 +1,12 @@
+.fa-bars {
+    cursor: pointer;
+}
+
+.nav-item {
+    .nav-link {
+        cursor: pointer;
+        .nav-icon{
+            transition:color 0.3s linear 0s;
+        }
+    }
+}

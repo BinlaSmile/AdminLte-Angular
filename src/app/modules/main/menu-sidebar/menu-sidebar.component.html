@@ -1,0 +1,57 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a [routerLink]="['/home']" class="brand-link">
+        <img
+            src="assets/img/logo.png"
+            alt="AdminlteAngular"
+            class="brand-image img-circle elevation-3"
+            style="opacity: 0.8"
+        />
+        <span class="brand-text font-weight-light">AdminlteAngular</span>
+    </a>
+    
+    <div class="sidebar">
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent nav-compact"
+                data-widget="treeview"
+                role="menu"
+                data-accordion="false">
+                <li class="nav-item" *ngFor="let menu of menuList">
+                    <a routerLink="{{menu.router}}" class="nav-link" *ngIf="!menu.children" menu-sidebar>
+                        <i class="nav-icon fas {{menu.icon}}"></i>
+                        <p>{{menu.title}}</p>
+                    </a>
+                    <a href="#" class="nav-link" *ngIf="menu.children" menu-sidebar>
+                        <i class="nav-icon fas {{menu.icon}}"></i>
+                        <p>
+                            {{menu.title}}
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" *ngIf="menu.children">
+                        <li class="nav-item" *ngFor="let scondMenu of menu.children">
+                            <a routerLink="{{menu.router + scondMenu.router}}" class="nav-link" *ngIf="!scondMenu.children" menu-sidebar>
+                                <i class="nav-icon far fa-circle"></i>
+                                <p>{{scondMenu.title}}</p>
+                            </a>
+                            <a href="#" class="nav-link" *ngIf="scondMenu.children" menu-sidebar>
+                                <i class="nav-icon far fa-circle"></i>
+                                <p>
+                                    {{scondMenu.title}}
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" *ngIf="scondMenu.children">
+                                <li class="nav-item" *ngFor="let thirdMenu of scondMenu.children">
+                                    <a routerLink="{{menu.router + scondMenu.router + thirdMenu.router}}" class="nav-link" menu-sidebar>
+                                        <i class="nav-icon far fa-dot-circle"></i>
+                                        <p>{{thirdMenu.title}}</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>    
+</aside>
