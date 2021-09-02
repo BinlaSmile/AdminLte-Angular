@@ -13,7 +13,8 @@
 
 - [ ] 面包屑导航
 
-  
+## Install
+Run `npm install` for install package
 
 ## Development server
 
