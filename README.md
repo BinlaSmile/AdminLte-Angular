@@ -1,5 +1,5 @@
 # AdminLte-Angular
-一个带有Adminlte3.1主题模板的 [Angular CLI](https://github.com/angular/angular-cli) 11.2.7版本的初始项目
+一个带有[Adminlte](https://github.com/ColorlibHQ/AdminLTE)3.1主题模板的 [Angular CLI](https://github.com/angular/angular-cli) 11.2.7版本的初始项目
 
 
 
