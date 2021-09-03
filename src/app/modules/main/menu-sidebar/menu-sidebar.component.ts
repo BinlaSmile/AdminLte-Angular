@@ -60,10 +60,10 @@ export class MenuSidebarComponent implements OnInit {
     }
     setNavActive() {
         let currentUrl = this.router.url;
-        let currentNode = document.querySelector('nav.mt-2').querySelector('[ng-reflect-router-link="'+currentUrl+'"]');
+        let currentNode = null;
         while(!currentNode && !(currentUrl==="" || currentUrl == null)){
-            currentUrl = currentUrl.replace(/(.*)\/{1}.*/,"$1");
             currentNode = document.querySelector('nav.mt-2').querySelector('[ng-reflect-router-link="'+currentUrl+'"]');
+            currentUrl = currentUrl.replace(/(.*)\/{1}.*/,"$1");
         }
 
         if(currentNode){
