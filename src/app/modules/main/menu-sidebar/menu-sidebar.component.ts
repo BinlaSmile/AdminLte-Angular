@@ -56,6 +56,7 @@ export class MenuSidebarComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        $('[data-widget="treeview"]').unbind();
         $('[data-widget="treeview"]').Treeview('init');
     }
 
