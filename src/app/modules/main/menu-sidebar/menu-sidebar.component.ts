@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnInit, Renderer2} from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
+declare var $: any;
 
 @Component({
     selector: 'app-menu-sidebar',
@@ -55,6 +56,7 @@ export class MenuSidebarComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        $('[data-widget="treeview"]').Treeview('init');
     }
 
     changeCss(element:any,routers :string[]){
