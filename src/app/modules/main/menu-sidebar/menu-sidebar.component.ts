@@ -38,42 +38,31 @@ export class MenuSidebarComponent implements OnInit {
             ]
         }
     ];
-
+    
     constructor(private router: Router, private render: Renderer2, private activatedRoute: ActivatedRoute){
         this.router.events
         .pipe(filter(event => event instanceof NavigationEnd))
         .pipe(map(() => this.activatedRoute))
-        .subscribe(() => {
-            this.removeNavAllActive();
-            this.setNavActive();
+        .subscribe((res) => {
+            const routers = res?.snapshot['_routerState']?.url?.split('/').map(o=> {
+                return o ? '/'+o : o;
+            }) ??[];
+            this.menuList.forEach(element => {
+                this.changeCss(element,routers);
+            });
+            
         });
     }
 
     ngOnInit(): void {
     }
-    
-    removeNavAllActive(){
-        let activeLinkList = document.querySelector('nav.mt-2').querySelectorAll('a.nav-link.active');
-        activeLinkList.forEach(r=>{
-            this.render.removeClass(r,'active');
-        });
-    }
-    setNavActive() {
-        let currentUrl = this.router.url;
-        let currentNode = null;
-        while(!currentNode && !(currentUrl==="" || currentUrl == null)){
-            currentNode = document.querySelector('nav.mt-2').querySelector('[ng-reflect-router-link="'+currentUrl+'"]');
-            currentUrl = currentUrl.replace(/(.*)\/{1}.*/,"$1");
-        }
 
-        if(currentNode){
-            while(!(currentNode.nodeName === "NAV" && currentNode.className ==="mt-2")){
-                if(currentNode.nodeName === "LI" && currentNode.className.indexOf("nav-item")!=-1){
-                    let activeLink = currentNode.querySelector('a.nav-link');
-                    this.render.addClass(activeLink,'active');
-                }
-                currentNode = this.render.parentNode(currentNode)
-            }
+    changeCss(element:any,routers :string[]){
+        element.currentCss = routers.includes(element.router)?'active':'';
+        if(element.children){   
+            element.children.forEach(e => {
+                this.changeCss(e,routers);
+            });
         }
     }
 }
