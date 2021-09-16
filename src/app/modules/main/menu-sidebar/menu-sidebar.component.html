@@ -28,7 +28,7 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview" *ngIf="menu.children">
-                        <li class="nav-item {{scondMenu.currentCss}}" *ngFor="let scondMenu of menu.children">
+                        <li class="nav-item" *ngFor="let scondMenu of menu.children">
                             <a routerLink="{{menu.router + scondMenu.router}}" class="nav-link {{scondMenu.currentCss}}" *ngIf="!scondMenu.children" menu-sidebar>
                                 <i class="nav-icon far fa-circle"></i>
                                 <p>{{scondMenu.title}}</p>
@@ -41,7 +41,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview" *ngIf="scondMenu.children">
-                                <li class="nav-item {{thirdMenu.currentCss}}" *ngFor="let thirdMenu of scondMenu.children">
+                                <li class="nav-item" *ngFor="let thirdMenu of scondMenu.children">
                                     <a routerLink="{{menu.router + scondMenu.router + thirdMenu.router}}" class="nav-link {{thirdMenu.currentCss}}" menu-sidebar>
                                         <i class="nav-icon far fa-dot-circle"></i>
                                         <p>{{thirdMenu.title}}</p>
